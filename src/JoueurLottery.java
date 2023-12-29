@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 
 public class JoueurLottery implements LotteryObserver {
+    private int ID;
     private String name;
     private ArrayList<Billet> billets = new ArrayList<>();
-    public JoueurLottery(String name){
+    public JoueurLottery(int ID,String name){
+        this.ID = ID;
         this.name = name;
     }
 
@@ -15,7 +17,7 @@ public class JoueurLottery implements LotteryObserver {
         int compteurBilletsGagnants = 0;
         for(Billet billet : this.billets){
             int compteurNumeroGagnantsParBillet = 0;
-            for(Integer numero : billet.numbers){
+            for(Integer numero : billet.getNumbers()){
                 if(numeroGagnants.contains(numero)){
                     compteurNumeroGagnantsParBillet++;
                 }
@@ -31,13 +33,21 @@ public class JoueurLottery implements LotteryObserver {
         StringBuilder sb = new StringBuilder();
         sb.append("Player: ").append(this.getName()).append(" has these tickets: ");
         for (Billet billet : this.billets) {
-            sb.append(billet.numbers).append(", ");
+            sb.append(billet.getNumbers()).append(", ");
         }
         // Remove the trailing comma and space
         if (!this.billets.isEmpty()) {
             sb.delete(sb.length() - 2, sb.length());
         }
         return sb.toString();
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getName() {

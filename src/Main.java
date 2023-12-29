@@ -6,9 +6,9 @@ import static java.lang.Thread.sleep;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        JoueurLottery joueur1 = new JoueurLottery("Mohamed");
-        JoueurLottery joueur2 = new JoueurLottery("Cherif");
-        JoueurLottery joueur3 = new JoueurLottery("Farid");
+        JoueurLottery joueur1 = new JoueurLottery(1,"Mohamed");
+        JoueurLottery joueur2 = new JoueurLottery(2,"Cherif");
+        JoueurLottery joueur3 = new JoueurLottery(3,"Farid");
         ServeurBillet serveurBillet = new ServeurBillet();
 
         serveurBillet.vendreBillet(joueur1);
