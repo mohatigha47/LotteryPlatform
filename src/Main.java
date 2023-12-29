@@ -1,16 +1,34 @@
+import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello and welcome!");
+        JoueurLottery joueur1 = new JoueurLottery("Mohamed");
+        JoueurLottery joueur2 = new JoueurLottery("Cherif");
+        JoueurLottery joueur3 = new JoueurLottery("Farid");
+        ServeurBillet serveurBillet = new ServeurBillet();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        serveurBillet.vendreBillet(joueur1);
+        serveurBillet.vendreBillet(joueur2);
+        serveurBillet.vendreBillet(joueur3);
+
+        // Wait for a period
+        try {
+            Thread.sleep(2000);
+            System.out.println("------------------------Sales ended !----------------------------");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
+
+        ArrayList<Integer> numerosGagnants = serveurBillet.getNumerosGagnants();
+        System.out.println("Numeros gagnants: " + numerosGagnants);
+        System.out.println(joueur1.getName() + " " + joueur1.isGagnant(numerosGagnants));
+        System.out.println(joueur2.getName() + " " + joueur2.isGagnant(numerosGagnants));
+        System.out.println(joueur3.getName() + " " + joueur3.isGagnant(numerosGagnants));
+
     }
 }
